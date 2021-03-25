@@ -15,6 +15,9 @@ body {
     display: none;
     text-align: center;
   }
+  #loading {
+    display: none;
+  }
   
   .file-upload-input {
     position: absolute;
@@ -60,10 +63,24 @@ body {
   }
   
   .file-upload-image {
-    max-height: 200px;
-    max-width: 200px;
+    max-height: 60%;
+    max-width: 60%;
     margin: auto;
-    padding: 20px;
+    padding: 10px;
+  }
+
+  .try-again-btn {
+    border-radius: 40px;
+    border: solid 1.5px #35465d;
+    background-color: #35465d;
+  }
+  
+  .try-again-text {
+    display: block;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #ffffff;
+    padding: 4px 15px;
   }
   
   .remove-image {
@@ -146,3 +163,741 @@ body {
     color: #35465d;
     margin: 0 auto;
   }
+
+  .bar-container {
+    height: 2.7rem;
+  }
+
+  .교텐.유리나-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .교텐.유리나-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(255, 192, 203, 1);
+  }
+  .나가하마.네루-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .나가하마.네루-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(128, 0, 128, 1);
+  }
+  .나카무라.마이-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .나카무라.마이-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(27, 175, 234, 1);
+  }
+  .나카이.리카-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .나카이.리카-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(251, 176, 59, 1);
+  }
+  .니시노.나나세-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .니시노.나나세-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(195, 140, 102, 1);
+  }
+  .니시카와.레이-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .니시카와.레이-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(49, 132, 155, 1);
+  }
+  .릿센.아이리-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .릿센.아이리-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .마츠무라.사유리-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .마츠무라.사유리-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .무카이치.미온-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .무카이치.미온-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .무토.토무-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .무토.토무-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .사사키.미레이-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .사사키.미레이-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .사이토.아스카-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .사이토.아스카-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .사이토.쿄코-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .사이토.쿄코-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .사카구치.나기사-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .사카구치.나기사-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .사토.미나미-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .사토.아카리-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .시라이시.마이-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .시라이시.마이-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .시로마.미루-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .시로마.미루-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .시마자키.하루카-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .시마자키.하루카-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .시미즈.마리아-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .시미즈.마리아-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .시타오.미우-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .시타오.미우-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .아라마키.미사키-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .아라마키.미사키-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .야마우치.미즈키-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .야마우치.미즈키-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .오구리.유이-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .오구리.유이-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .오다.에리나-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .오다.에리나-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .오오모리.마호-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .오오모리.마호-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .오카베.린-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .오카베.린-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .와타나베.리사-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .와타나베.리사-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .와타나베.미호-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .와타나베.미호-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .요시카와.나나세-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .요시카와.나나세-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .팀8.요코야마.유이-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .팀8.요코야마.유이-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .이마이즈미.유이-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .이마이즈미.유이-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .이시다.치호-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .이시다.치호-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .이와타테.사호-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .이와타테.사호-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .코바야시.유이-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .코바야시.유이-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .코사카.나오-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .코사카.나오-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .쿠라노오.나루미-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .쿠라노오.나루미-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .쿠보.사토네-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .쿠보.사토네-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .타키노.유미코-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .타키노.유미코-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .토미타.스즈카-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .토미타.스즈카-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .하시모토.하루나-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .하시모토.하루나-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .핫토리.유우나-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .핫토리.유우나-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+  .호리.미오나-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgba(235, 166, 190, 0.2);
+  }
+  .호리.미오나-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: rgba(235, 166, 190, 1);
+  }
+
+  .percent-text {
+    font-size: 1rem;
+    color: #35465d;
+  }
+
+  .label {
+    width: 20%;
+    text-align: left;
+    height: 2rem;
+  }
+
+  #label-container {
+    width: 80%;
+    margin: 0 auto;
+}
+.result-message {
+    font-size: 2rem;
+}
