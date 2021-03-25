@@ -1,0 +1,2 @@
+User-agent: *
+Allow: https://aishindan-sakakb.netlify.app/sitemap.xml
