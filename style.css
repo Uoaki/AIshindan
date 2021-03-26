@@ -901,3 +901,8 @@ body {
 .result-message {
     font-size: 2rem;
 }
+
+.mt-1 .text-center {
+  text-align: center;
+  margin-top: 25rem;
+}
