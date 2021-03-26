@@ -168,6 +168,11 @@ body {
     height: 2.7rem;
   }
 
+  .footer {
+    background-color: initial;
+    color: initial;
+}
+
   .교텐.유리나-box {
     position: absolute;
     top: 0;
