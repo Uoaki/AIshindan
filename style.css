@@ -2,7 +2,15 @@ body {
     font-family: sans-serif;
     background-color: #ffffff;
   }
-  
+
+  .youtube-link {
+    font-family: NanumSquareR;
+    font-size: 1rem;
+    line-height: 1.71;
+    text-align: center;
+    color: #17131394;
+}
+
   .file-upload {
     margin: 0 auto;
     padding: 13% 0;
