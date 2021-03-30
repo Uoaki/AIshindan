@@ -39,9 +39,9 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE. -->
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
     <title>나와 인연인 사카미치AKB 멤버 찾기</title>
-    <link rel="alternate" hreflang="ko" href="https://aishindan-sakakb.netlify.app/ko/index.html">
+    <!-- <link rel="alternate" hreflang="ko" href="https://aishindan-sakakb.netlify.app/ko/index.html">
     <link rel="alternate" hreflang="ja" href="https://aishindan-sakakb.netlify.app/ja/index.html">
-    <link rel="alternate" hreflang="x-default" href="https://aishindan-sakakb.netlify.app/">
+    <link rel="alternate" hreflang="x-default" href="https://aishindan-sakakb.netlify.app/"> -->
     <meta name="title" content="나와 인연인 사카미치AKB 멤버 찾기">
     <meta name="subject" content="AI가 판단하는 당신과 매칭되는 멤버는? 나와 천생연분인 멤버들을 찾아보자">
     <meta name="keywords"
@@ -81,7 +81,7 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE. -->
             </div>
         </div>
     </nav>
-    <section class="container d-flex flex-column justify-content-center align-items-center">
+    <!-- <section class="container d-flex flex-column justify-content-center align-items-center">
         <span class="select language">Language</span>
         <select onchange="changeLanguage(this)" class="custom-select col-8">
             <option value="ko" lang="ko">한국어</option>
@@ -103,7 +103,7 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE. -->
                 window.location.href = "https://aishindan-sakakb.netlify.app/"+lang.value+"/index.html";
             }
         }
-    </script>
+    </script> -->
     <section class="section">
         <h1 class="title">사카미치AKB 매칭 테스트</h1>
         <h2 class="subtitle">나와 가장 잘 어울리는 멤버는 누구일까?</h2>
@@ -361,7 +361,7 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE. -->
                     resultMessage = "당신과 가장 잘 어울리는 멤버는 호리 미오나 입니다."
                     break;
                 default:
-                    resultMessage = "알 수 없음"
+                    resultMessage = "유감입니다! 인연이 없네요"
                     break;
             }
             $('.result-message').html(resultMessage);
@@ -508,7 +508,7 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE. -->
                         labelTitle = "호리 미오나"
                         break;
                     default:
-                        labelTitle = "알 수 없음"
+                        labelTitle = "인연 없음"
                         break;
                 }
 
