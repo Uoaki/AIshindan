@@ -1,0 +1,525 @@
+<!-- Copyright (c) 2021 by Aaron Vanston (https://codepen.io/aaronvanston/pen/yNYOXR)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and 
+associated documentation files (the "Software"), to deal in the Software without restriction, 
+including without limitation the rights to use, copy, modify, merge, publish, distribute, 
+sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or 
+substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
+DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, 
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR 
+THE USE OR OTHER DEALINGS IN THE SOFTWARE. -->
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="naver-site-verification" content="1ad1fa17a8ca480a3a0e967e4d43af55b9f12939" />
+    <meta name="description" content="AIで自分と坂道AKBメンバーの愛情度を測ってみよう！">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VF4X1BB679"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-VF4X1BB679');
+    </script>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    <title>「AI診断」坂道AKBとの愛情度は？</title>
+    <link rel="alternate" hreflang="ko" href="https://aishindan-sakakb.netlify.app/ko/index.html">
+    <link rel="alternate" hreflang="ja" href="https://aishindan-sakakb.netlify.app/ja/index.html">
+    <link rel="alternate" hreflang="x-default" href="https://aishindan-sakakb.netlify.app/">
+    <meta name="title" content="「AI診断」坂道AKBとの愛情度は？">
+    <meta name="subject" content="AIが判断するあなたと一番愛情度高いメンバーは? 運命のメンバーを探してみよう！">
+    <meta name="keywords"
+        content="マッチングテスト, AIマッチングテスト, 運命のメンバー, 運命のAKBメンバー, 運命の乃木坂メンバー, 運命の欅坂メンバー, 運命の櫻坂メンバー, 運命の日向坂メンバー, AKB48, 乃木坂46, 欅坂46, 櫻坂46, 日向坂46, AI, AI診断, Google, teachablemachine">
+    <meta name="author" content="ぱるぱるさん">
+    <link rel="canonical" href="https://aishindan-sakakb.netlify.app">
+    <link rel="stylesheet" href="style.css">
+    <meta property="og:url" content="https://aishindan-sakakb.netlify.app" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="「AI診断」坂道AKBとの愛情度は？" />
+    <meta property="og:description" content="自分の運命の坂道AKBメンバーを探してみよう! メンバーの顔を学習したAIがあなたとメンバーの愛情度を測定して運命のメンバーを探してくれます！" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light nav-distance">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="https://aishindan-sakakb.netlify.app/ja">「AI診断」坂道AKBとの愛情度は？</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/Uoaki">Github</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://southernwindblog.tistory.com/">Blog</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="container d-flex flex-column justify-content-center align-items-center">
+        <span class="select language">Language</span>
+        <select onchange="changeLanguage(this)" class="custom-select col-8">
+            <option value="ko" lang="ko">한국어</option>
+            <option value="ja" lang="ja">日本語</option>
+        </select>
+    </section>
+    <script>
+        var ua = navigator.userAgent.toLowerCase();
+        function changeLanguage(lang) {
+            if( ( navigator.userAgent.indexOf('Mac OS') > 0 && navigator.userAgent.indexOf('Safari') <= 0 ) || ( ( navigator.userAgent.indexOf('Android') > 0 && navigator.userAgent.indexOf('wv)') > 0 ) ) ){
+                if (ua.match('android') != null) {
+                    window.open("googlechrome://navigate?url=aishindan-sakakb.netlify.app/"+lang.value+"/index.html"); //android
+                } else if (ua.indexOf("iphone")>-1||ua.indexOf("ipad")>-1||ua.indexOf("ipod")>-1) { 
+                    window.location.href = "https://aishindan-sakakb.netlify.app/"+lang.value+"/index.html";
+                } else {
+                    window.location.href = "https://aishindan-sakakb.netlify.app/"+lang.value+"/index.html";
+                }
+            } else {
+                window.location.href = "https://aishindan-sakakb.netlify.app/"+lang.value+"/index.html";
+            }
+        }
+    </script>
+    <section class="section">
+        <h1 class="title">坂道AKBとの愛情度は？</h1>
+        <h2 class="subtitle">自分の運命のメンバーは誰？</h2>
+    </section>
+
+    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <div class="file-upload">
+        <div class="image-upload-wrap">
+            <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+            <div class="drag-text">
+                <h3 class="upload-text">写真をドラッグしたり、押してアップロードしましょう！</h3>
+            </div>
+        </div>
+        <div class="file-upload-content">
+            <img class="file-upload-image" id="face-image" src="#" alt="your image" />
+            <div id="loading" class="animated bounce">
+                <div class="spinner-border" role="status">
+                    <!-- <span class="sr-only">Loading...</span> -->
+                </div>
+                <p class="text-center">AIが愛情度を測定しています.</p>
+            </div>
+            <p class="result-message"></p>
+            <div id="label-container" class="d-flex flex-column justify-content-around"></div>
+            <!-- Go to www.addthis.com/dashboard to customize your tools -->
+            <div class="addthis_inline_share_toolbox"></div>
+            <!-- Try Again Button-->
+            <div class="pt-3 image-title-wrap">
+                <button type="button p-2" class="try-again-btn" onclick="removeUpload()" class="remove-image">
+                    <span class="try-again-text">他の写真で測る</span>
+                </button>
+            </div>
+        </div>
+        <h5 class="mt-5 text-center">写真はどこにも保存されません.</h5>
+    </div>
+    <div class="ad-banner">
+        <!--kakao Adfit-->
+        <ins class="kakao_ad_area" style="display:none;" data-ad-unit="DAN-ExmMyyXInum4RUD9" data-ad-width="320"
+            data-ad-height="50"></ins>
+        <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+    </div>
+
+    <footer class="footer pt-5 container d-flex justify-content-center">
+        <p>© 2021 ぱるぱるさん All Rights Reserved.</p>
+    </footer>
+    <div id="webcam-container"></div>
+    <div id="label-container"></div>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+        crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('.image-upload-wrap').hide();
+                    $('#loading').show();
+                    $('.file-upload-image').attr('src', e.target.result);
+                    $('.file-upload-content').show();
+                    $('.image-title').html(input.files[0].name);
+                };
+                reader.readAsDataURL(input.files[0]);
+                init().then(() => {
+                    predict();
+                    $('#loading').hide();
+                });
+            } else {
+                removeUpload();
+            }
+        }
+
+        function removeUpload() {
+            $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+            $('.file-upload-content').hide();
+            $('.image-upload-wrap').show();
+            window.location.reload();
+        }
+        $('.image-upload-wrap').bind('dragover', function () {
+            $('.image-upload-wrap').addClass('image-dropping');
+        });
+        $('.image-upload-wrap').bind('dragleave', function () {
+            $('.image-upload-wrap').removeClass('image-dropping');
+        });
+    </script>
+    <script type="text/javascript">
+        // More API functions here:
+        // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
+
+        // the link to your model provided by Teachable Machine export panel
+        const URL = "https://teachablemachine.withgoogle.com/models/Uurgh-fES/";
+
+        let model, webcam, labelContainer, maxPredictions;
+
+        // Load the image model and setup the webcam
+        async function init() {
+            const modelURL = URL + "model.json";
+            const metadataURL = URL + "metadata.json";
+
+            // load the model and metadata
+            // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
+            // or files from your local hard drive
+            // Note: the pose library adds "tmImage" object to your window (window.tmImage)
+            model = await tmImage.load(modelURL, metadataURL);
+            maxPredictions = model.getTotalClasses();
+
+            labelContainer = document.getElementById("label-container");
+            for (let i = 0; i < maxPredictions; i++) { // and class labels
+                labelContainer.appendChild(document.createElement("div"));
+            }
+        }
+
+        // run the webcam image through the image model
+        async function predict() {
+            // predict can take in an image, video or canvas html element
+            var image = document.getElementById("face-image")
+            const prediction = await model.predict(image, flipped = false);
+            prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
+            console.log(prediction[0].className);
+            var resultMessage;
+            switch (prediction[0].className) {
+                case "교텐 유리나":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 교텐 유리나 입니다."
+                    break;
+                case "나가하마 네루":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 나가하마 네루 입니다."
+                    break;
+                case "나카무라 마이":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 나카무라 마이 입니다."
+                    break;
+                case "나카이 리카":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 나카이 리카 입니다."
+                    break;
+                case "니시노 나나세":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 니시노 나나세 입니다."
+                    break;
+                case "니시카와 레이":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 니시카와 레이 입니다."
+                    break;
+                case "릿센 아이리":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 릿센 아이리 입니다."
+                    break;
+                case "마츠무라 사유리":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 마츠무라 사유리 입니다."
+                    break;
+                case "무카이치 미온":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 무카이치 미온 입니다."
+                    break;
+                case "무토 토무":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 무토 토무 입니다."
+                    break;
+                case "사사키 미레이":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 사사키 미레이 입니다."
+                    break;
+                case "사이토 아스카":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 사이토 아스카 입니다."
+                    break;
+                case "사이토 쿄코":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 사이토 쿄코 입니다."
+                    break;
+                case "사카구치 나기사":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 사카구치 나기사 입니다."
+                    break;
+                case "사토 미나미":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 사토 미나미 입니다."
+                    break;
+                case "사토 아카리":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 사토 아카리 입니다."
+                    break;
+                case "시라이시 마이":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 시라이시 마이 입니다."
+                    break;
+                case "시로마 미루":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 시로마 미루 입니다."
+                    break;
+                case "시마자키 하루카":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 시마자키 하루카 입니다."
+                    break;
+                case "시미즈 마리아":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 시미즈 마리아 입니다."
+                    break;
+                case "시타오 미우":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 시타오 미우 입니다."
+                    break;
+                case "아라마키 미사키":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 아라마키 미사키 입니다."
+                    break;
+                case "야마우치 미즈키":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 야마우치 미즈키 입니다."
+                    break;
+                case "오구리 유이":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 오구리 유이 입니다."
+                    break;
+                case "오다 에리나":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 오다 에리나 입니다."
+                    break;
+                case "오오모리 마호":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 오오모리 마호 입니다."
+                    break;
+                case "오카베 린":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 오카베 린 입니다."
+                    break;
+                case "와타나베 리사":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 와타나베 리사 입니다."
+                    break;
+                case "와타나베 미호":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 와타나베 미호 입니다."
+                    break;
+                case "요시카와 나나세":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 요시카와 나나세 입니다."
+                    break;
+                case "팀8 요코야마 유이":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 팀8 요코야마 유이입니다."
+                    break;
+                case "이마이즈미 유이":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 이마이즈미 유이 입니다."
+                    break;
+                case "이시다 치호":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 이시다 치호 입니다."
+                    break;
+                case "이와타테 사호":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 이와타테 사호 입니다."
+                    break;
+                case "코바야시 유이":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 코바야시 유이 입니다."
+                    break;
+                case "코사카 나오":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 코사카 나오 입니다."
+                    break;
+                case "쿠라노오 나루미":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 쿠라노오 나루미 입니다."
+                    break;
+                case "쿠보 사토네":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 쿠보 사토네 입니다."
+                    break;
+                case "타키노 유미코":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 타키노 유미코 입니다."
+                    break;
+                case "토미타 스즈카":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 토미타 스즈카 입니다."
+                    break;
+                case "하시모토 하루나":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 하시모토 하루나 입니다."
+                    break;
+                case "핫토리 유우나":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 핫토리 유우나 입니다."
+                    break;
+                case "호리 미오나":
+                    resultMessage = "당신과 가장 잘 어울리는 멤버는 호리 미오나 입니다."
+                    break;
+                default:
+                    resultMessage = "유감입니다! 인연이 없네요"
+                    break;
+            }
+            $('.result-message').html(resultMessage);
+            for (let i = 0; i < 5; i++) {
+                // const classPrediction =
+                //     prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+                // labelContainer.childNodes[i].innerHTML = classPrediction;
+                if (prediction[i].probability.toFixed(2) > 0.1) {
+                    barWidth = Math.round(prediction[i].probability.toFixed(2) * 100) + "%";
+                } else if (prediction[i].probability.toFixed(2) >= 0.01) {
+                    barWidth = "4%"
+                } else {
+                    barWidth = "2%"
+                }
+                var labelTitle;
+                switch (prediction[i].className) {
+                    case "교텐 유리나":
+                        labelTitle = "교텐 유리나"
+                        break;
+                    case "나가하마 네루":
+                        labelTitle = "나가하마 네루"
+                        break;
+                    case "나카무라 마이":
+                        labelTitle = "나카무라 마이"
+                        break;
+                    case "나카이 리카":
+                        labelTitle = "나카이 리카"
+                        break;
+                    case "니시노 나나세":
+                        labelTitle = "니시노 나나세"
+                        break;
+                    case "니시카와 레이":
+                        labelTitle = "니시카와 레이"
+                        break;
+                    case "릿센 아이리":
+                        labelTitle = "릿센 아이리"
+                        break;
+                    case "마츠무라 사유리":
+                        labelTitle = "마츠무라 사유리"
+                        break;
+                    case "무카이치 미온":
+                        labelTitle = "무카이치 미온"
+                        break;
+                    case "무토 토무":
+                        labelTitle = "무토 토무"
+                        break;
+                    case "사사키 미레이":
+                        labelTitle = "사사키 미레이"
+                        break;
+                    case "사이토 아스카":
+                        labelTitle = "사이토 아스카"
+                        break;
+                    case "사이토 쿄코":
+                        labelTitle = "사이토 쿄코"
+                        break;
+                    case "사카구치 나기사":
+                        labelTitle = "사카구치 나기사"
+                        break;
+                    case "사토 미나미":
+                        labelTitle = "사토 미나미"
+                        break;
+                    case "사토 아카리":
+                        labelTitle = "사토 아카리"
+                        break;
+                    case "시라이시 마이":
+                        labelTitle = "시라이시 마이"
+                        break;
+                    case "시로마 미루":
+                        labelTitle = "시로마 미루"
+                        break;
+                    case "시마자키 하루카":
+                        labelTitle = "시마자키 하루카"
+                        break;
+                    case "시미즈 마리아":
+                        labelTitle = "시미즈 마리아"
+                        break;
+                    case "시타오 미우":
+                        labelTitle = "시타오 미우"
+                        break;
+                    case "아라마키 미사키":
+                        labelTitle = "아라마키 미사키"
+                        break;
+                    case "야마우치 미즈키":
+                        labelTitle = "야마우치 미즈키"
+                        break;
+                    case "오구리 유이":
+                        labelTitle = "오구리 유이"
+                        break;
+                    case "오다 에리나":
+                        labelTitle = "오다 에리나"
+                        break;
+                    case "오오모리 마호":
+                        labelTitle = "오오모리 마호"
+                        break;
+                    case "오카베 린":
+                        labelTitle = "오카베 린"
+                        break;
+                    case "와타나베 리사":
+                        labelTitle = "와타나베 리사"
+                        break;
+                    case "와타나베 미호":
+                        labelTitle = "와타나베 미호"
+                        break;
+                    case "요시카와 나나세":
+                        labelTitle = "요시카와 나나세"
+                        break;
+                    case "팀8 요코야마 유이":
+                        labelTitle = "팀8 요코야마 유이"
+                        break;
+                    case "이마이즈미 유이":
+                        labelTitle = "이마이즈미 유이"
+                        break;
+                    case "이시다 치호":
+                        labelTitle = "이시다 치호"
+                        break;
+                    case "이와타테 사호":
+                        labelTitle = "이와타테 사호"
+                        break;
+                    case "코바야시 유이":
+                        labelTitle = "코바야시 유이"
+                        break;
+                    case "코사카 나오":
+                        labelTitle = "코사카 나오"
+                        break;
+                    case "쿠라노오 나루미":
+                        labelTitle = "쿠라노오 나루미"
+                        break;
+                    case "쿠보 사토네":
+                        labelTitle = "쿠보 사토네"
+                        break;
+                    case "타키노 유미코":
+                        labelTitle = "타키노 유미코"
+                        break;
+                    case "토미타 스즈카":
+                        labelTitle = "토미타 스즈카"
+                        break;
+                    case "하시모토 하루나":
+                        labelTitle = "하시모토 하루나"
+                        break;
+                    case "핫토리 유우나":
+                        labelTitle = "핫토리 유우나"
+                        break;
+                    case "호리 미오나":
+                        labelTitle = "호리 미오나"
+                        break;
+                    default:
+                        labelTitle = "인연 없음"
+                        break;
+                }
+
+                var label = "<div class='label d-flex align-items-center'>" + labelTitle + "</div>"
+                var bar = "<div class='bar-container position-relative container'><div class='" + prediction[i].className + "-box'></div><div class='d-flex justify-content-center align-items-center " + prediction[i].className + "-bar' style='width: " + barWidth + "'><span class='d-block percent-text'>" + Math.round(prediction[i].probability.toFixed(2) * 100) + "%</span></div></div>"
+                labelContainer.childNodes[i].innerHTML = label + bar;
+            }
+        }
+    </script>
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-605d72c52b38a353"></script>
+</body>
+
+</html>
