@@ -92,12 +92,12 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE. -->
                 if (ua.match('android') != null) {
                     window.open("googlechrome://navigate?url=aishindan-sakakb.netlify.app/"+lang.value+"/index.html"); //android
                 } else if (ua.indexOf("iphone")>-1||ua.indexOf("ipad")>-1||ua.indexOf("ipod")>-1) { 
-                    window.location.href = "https://aishindan-sakakb.netlify.app/index.html";
+                    window.location.href = "https://aishindan-sakakb.netlify.app/"+lang.value+"/index.html";
                 } else {
-                    window.location.href = "https://aishindan-sakakb.netlify.app/index.html";
+                    window.location.href = "https://aishindan-sakakb.netlify.app/"+lang.value+"/index.html";
                 }
             } else {
-                window.location.href = "https://aishindan-sakakb.netlify.app/index.html";
+                window.location.href = "https://aishindan-sakakb.netlify.app/"+lang.value+"/index.html";
             }
         }
     </script>
