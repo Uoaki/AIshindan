@@ -14,6 +14,15 @@ body {
 .select-language {
   font-size: 2em;
 }
+
+.youtube-link {
+  font-family: NanumSquareR;
+  font-size: 1rem;
+  line-height: 1.71;
+  text-align: center;
+  color: #17131394;
+  margin: 0 auto;
+}
   
   .file-upload {
     margin: 0 auto;
