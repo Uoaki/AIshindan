@@ -1,6 +1,7 @@
 坂道AKB Project Using Google Teachable Machine
 
 URL: https://aishindan-sakakb.netlify.app/
+
 Blog: https://southernwindblog.tistory.com/15
 
 
